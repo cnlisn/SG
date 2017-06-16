@@ -4,10 +4,66 @@
     android:layout_height="match_parent"
     tools:context="com.lisn.sg.fragment.HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/hello_blank_fragment" />
+
+
+        <ImageButton
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/search"
+            android:id="@+id/imagebutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/btn"
+            android:text="openActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:layout_width="10dp"
+            android:layout_height="wrap_content" />
+        <LinearLayout
+            android:gravity="center"
+            android:padding="5dp"
+            android:background="#5000"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:textColor="#000"
+                android:id="@+id/et_input"
+                android:layout_width="0dp"
+                android:layout_height="38dp"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:background="#bfff" />
+
+            <ImageButton
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="25dp"
+                android:background="@drawable/search"
+                android:id="@+id/bt_search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+        <ListView
+            android:id="@+id/listView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </ListView>
+
+    </LinearLayout>
+
 
 </FrameLayout>
