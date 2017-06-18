@@ -45,21 +45,21 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         T=getActivity();
 
-        ImageButton imageButton = (ImageButton) view.findViewById(R.id.imagebutton);
-        imageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String packageName = getActivity().getPackageName();
-
-                Intent intent = new Intent();
-                ComponentName comp = new ComponentName(
-                        packageName,
-                        packageName+".MainActivity");
-                intent.setComponent(comp);
-//                intent.setAction("android.intent.action.MAIN");
-                startActivity(intent);
-            }
-        });
+//        ImageButton imageButton = (ImageButton) view.findViewById(R.id.imagebutton);
+//        imageButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String packageName = getActivity().getPackageName();
+//
+//                Intent intent = new Intent();
+//                ComponentName comp = new ComponentName(
+//                        packageName,
+//                        packageName+".MainActivity");
+//                intent.setComponent(comp);
+////                intent.setAction("android.intent.action.MAIN");
+//                startActivity(intent);
+//            }
+//        });
 
         initView(view);
 
