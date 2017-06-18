@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.lisn.sg.fragment.HomeFragment">
+    tools:context="com.lisn.sg.Fragment.HomeFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,24 +12,15 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/hello_blank_fragment" />
+            android:text="获取手机中已安装应用，单击打开" />
 
 
-        <ImageButton
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="20dp"
-            android:background="@drawable/search"
-            android:id="@+id/imagebutton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
         <Button
             android:id="@+id/btn"
             android:text="openActivity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
-        <ImageView
-            android:layout_width="10dp"
-            android:layout_height="wrap_content" />
+
         <LinearLayout
             android:gravity="center"
             android:padding="5dp"

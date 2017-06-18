@@ -1,28 +1,26 @@
-package com.lisn.sg.fragment;
+package com.lisn.sg.Fragment;
 
 
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ResolveInfo;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
-import com.lisn.sg.MainActivity;
+import com.lisn.sg.Adapter.AppInfoAdapter;
+import com.lisn.sg.Bean.AppInfo;
 import com.lisn.sg.R;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static android.R.id.list;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -30,7 +28,7 @@ import static android.R.id.list;
 public class HomeFragment extends Fragment {
 
 
-    private ArrayList list;
+    private ArrayList AppInfoList;
     private Context T;
     private List<ResolveInfo> mApps;
     private ResolveInfo info;
@@ -71,10 +69,19 @@ public class HomeFragment extends Fragment {
     private void initView(View view) {
         Button btn = (Button) view.findViewById(R.id.btn);
         ListView listView = (ListView) view.findViewById(R.id.listView);
-        list = new ArrayList<String>();
+        AppInfoList = new ArrayList<AppInfo>();
         getList();
-        ArrayAdapter<String> mAdapter = new ArrayAdapter<String>(
-                getActivity(), android.R.layout.simple_list_item_1, list);
+        AppInfoAdapter<AppInfo> mAdapter = new AppInfoAdapter<AppInfo>(AppInfoList, listView) {
+            @Override
+            public View getConvertView(AppInfo appInfo, int position, View convertView, ViewGroup parent) {
+                if (convertView == null) {
+                    convertView= View.inflate(T, R.layout.item_appinfo, parent);
+                    // TODO: 2017/6/18  
+                }
+                return convertView;
+            }
+
+        };
         listView.setAdapter(mAdapter);
 
         btn.setOnClickListener(new View.OnClickListener() {
@@ -86,20 +93,23 @@ public class HomeFragment extends Fragment {
         });
     }
 
+    //获取系统已安装应用信息并存入list集合
     private void getList() {
-        list.clear();
+        AppInfoList.clear();
         Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);
         mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
 //        String packageName = getActivity().getPackageName();
 //        mainIntent.setPackage(packageName);
         mApps = T.getPackageManager().queryIntentActivities(mainIntent, 0);
+        AppInfo appInfo;
         for (int i = 0; i < mApps.size(); i++) {
             info = mApps.get(i);
             String appLabel = info.loadLabel(T.getPackageManager()).toString();
-            String packagename = info.activityInfo.packageName;
-            String appname = info.activityInfo.name;
-            list.add("appLabel: " + appLabel + " || \n packagename: " + packagename
-                    + " || \n appname: " + appname);
+            String packageName = info.activityInfo.packageName;
+            String actionName = info.activityInfo.name;
+            Drawable loadIcon = info.activityInfo.loadIcon(T.getPackageManager());
+            appInfo=new AppInfo(appLabel,packageName,actionName,loadIcon);
+            AppInfoList.add(appInfo);
         }
     }
 

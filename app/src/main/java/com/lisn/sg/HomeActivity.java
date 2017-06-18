@@ -11,7 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.MenuItem;
 
-import com.lisn.sg.fragment.HomeFragment;
+import com.lisn.sg.Fragment.HomeFragment;
 
 public class HomeActivity extends BaseActivity {
 
