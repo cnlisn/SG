@@ -12,6 +12,7 @@ import android.view.Gravity;
 import android.view.MenuItem;
 
 import com.lisn.sg.fragment.HomeFragment;
+import com.lisn.sg.fragment.PopFragment;
 
 public class HomeActivity extends BaseActivity {
 
@@ -81,9 +82,9 @@ public class HomeActivity extends BaseActivity {
             case 0:
                 currentFragment = new HomeFragment();
                 break;
-//            case 1:
-//                currentFragment = new PopFragment();
-//                break;
+            case 1:
+                currentFragment = new PopFragment();
+                break;
 //            case 2:
 //                currentFragment = new ProcessFragment();
 //                break;
