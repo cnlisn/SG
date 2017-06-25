@@ -1,5 +1,6 @@
 package com.lisn.sg;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -15,6 +16,7 @@ import android.view.MenuItem;
 import com.lisn.sg.Fragment.HomeFragment;
 import com.lisn.sg.Fragment.PopFragment;
 import com.lisn.sg.Fragment.SQlcruqFragment;
+import com.lisn.sg.Utils.LsUtils;
 
 
 public class HomeActivity extends BaseActivity {
@@ -26,9 +28,11 @@ public class HomeActivity extends BaseActivity {
     private PopFragment mPopFragment;
     private HomeFragment mHomeFragment;
     private SQlcruqFragment mSQlcruqFragment;
+    private Context mContext;
 
     @Override
     public void setContentView() {
+        mContext = this;
         setContentView(R.layout.activity_home);
     }
 
@@ -59,7 +63,7 @@ public class HomeActivity extends BaseActivity {
                         selectItem(2);
                         break;
                     case R.id.my_navigation_3:
-                        selectItem(1);
+                        LsUtils.StarteActivity(mContext,WordWrapView.class);
                         break;
                 }
                 drawerLayout.closeDrawer(Gravity.START);

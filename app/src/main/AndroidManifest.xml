@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.lisn.sg">
+          package="com.lisn.sg">
 
     <application
         android:allowBackup="true"
@@ -23,16 +23,18 @@
         </activity>
         <activity
             android:name=".HomeActivity"
-            android:windowSoftInputMode="adjustUnspecified|stateHidden"
             android:configChanges="orientation|keyboardHidden"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".Popup.PopupWindowActivity"></activity>
+        <activity android:name=".Popup.PopupWindowActivity"/>
+        <activity android:name=".WordWrapView">
+        </activity>
     </application>
 
 </manifest>
