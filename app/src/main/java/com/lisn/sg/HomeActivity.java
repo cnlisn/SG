@@ -40,7 +40,7 @@ public class HomeActivity extends BaseActivity {
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         ActionBarDrawerToggle DrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, 0, 0);
         DrawerToggle.syncState();
-        selectItem(2);
+        selectItem(0);
     }
 
     @Override

@@ -5,19 +5,25 @@
               android:layout_height="match_parent">
     <ImageView
         android:id="@+id/iv_icon"
+        android:background="@mipmap/ic_launcher"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="0dp"
         android:layout_weight="1"
+        android:gravity="center_vertical"
         android:layout_height="match_parent">
-        <TextureView
+        <TextView
             android:id="@+id/appName"
+            android:text="appName"
+            android:textSize="16dp"
+            android:textColor="#000"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-        <TextureView
+        <TextView
             android:id="@+id/packgeName"
+            android:text="packgeName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </LinearLayout>

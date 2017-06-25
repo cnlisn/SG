@@ -22,21 +22,21 @@ import java.util.List;
  * ****************************
  * 版权所有违法必究
  */
-public abstract class AppInfoAdapter<T> extends BaseAdapter {
+public abstract class AppInfoAdapter extends BaseAdapter {
 
-    private final List<T> Datas;
+    private final List<AppInfo> Datas;
     private final ListView listView;
     private OnAppInfoClickListener onAppInfoClickListener;
 
     public interface OnAppInfoClickListener {
-        void onClick(AppInfo t, int posation);
+        void onClick(AppInfo appInfo, int posation);
     }
 
     public void setOnAppInfoClickListener(OnAppInfoClickListener listener) {
         this.onAppInfoClickListener = listener;
     }
 
-    public AppInfoAdapter(final List<T> Datas, ListView listView) {
+    public AppInfoAdapter(final List<AppInfo> Datas, ListView listView) {
         this.Datas = Datas;
         this.listView = listView;
 
@@ -68,11 +68,10 @@ public abstract class AppInfoAdapter<T> extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        T t = Datas.get(position);
-        View view = getConvertView(t, position, convertView, parent);
-        return view;
+        AppInfo t = Datas.get(position);
+        return getConvertView(t, position, convertView, parent);
     }
 
-    public abstract View getConvertView(T t, int position,
+    public abstract View getConvertView(AppInfo t, int position,
                                         View convertView, ViewGroup parent);
 }

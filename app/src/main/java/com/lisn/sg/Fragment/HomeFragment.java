@@ -13,7 +13,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.lisn.sg.Adapter.AppInfoAdapter;
 import com.lisn.sg.Bean.AppInfo;
@@ -32,6 +34,7 @@ public class HomeFragment extends Fragment {
     private Context T;
     private List<ResolveInfo> mApps;
     private ResolveInfo info;
+    private AppInfoAdapter.OnAppInfoClickListener listener;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -43,7 +46,7 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-        T=getActivity();
+        T = getActivity();
 
 //        ImageButton imageButton = (ImageButton) view.findViewById(R.id.imagebutton);
 //        imageButton.setOnClickListener(new View.OnClickListener() {
@@ -71,17 +74,42 @@ public class HomeFragment extends Fragment {
         ListView listView = (ListView) view.findViewById(R.id.listView);
         AppInfoList = new ArrayList<AppInfo>();
         getList();
-        AppInfoAdapter<AppInfo> mAdapter = new AppInfoAdapter<AppInfo>(AppInfoList, listView) {
+        AppInfoAdapter mAdapter = new AppInfoAdapter(AppInfoList, listView) {
             @Override
             public View getConvertView(AppInfo appInfo, int position, View convertView, ViewGroup parent) {
+                ViewHolder viewHolder = null;
                 if (convertView == null) {
-                    convertView= View.inflate(T, R.layout.item_appinfo, parent);
-                    // TODO: 2017/6/18  
+                    convertView = View.inflate(T, R.layout.item_appinfo, null);
+                    viewHolder = new ViewHolder();
+                    viewHolder.icon = (ImageView) convertView.findViewById(R.id.iv_icon);
+                    viewHolder.appName = (TextView) convertView.findViewById(R.id.appName);
+                    viewHolder.packgeName = (TextView) convertView.findViewById(R.id.packgeName);
+                    convertView.setTag(viewHolder);
+                } else {
+                    viewHolder = (ViewHolder) convertView.getTag();
                 }
+                viewHolder.icon.setBackground(appInfo.LoadIcon);
+                viewHolder.appName.setText(appInfo.AppLabel);
+                viewHolder.packgeName.setText(appInfo.PackageName);
                 return convertView;
             }
 
         };
+
+        //点击APPInfo条目打开对应的应用
+        listener = new AppInfoAdapter.OnAppInfoClickListener() {
+            @Override
+            public void onClick(AppInfo appInfo, int posation) {
+                Intent intent = new Intent();
+                ComponentName comp = new ComponentName(
+                        appInfo.PackageName,
+                        appInfo.ActionName);
+                intent.setComponent(comp);
+//                intent.setAction("android.intent.action.MAIN");
+                startActivity(intent);
+           }
+        };
+        mAdapter.setOnAppInfoClickListener(listener);
         listView.setAdapter(mAdapter);
 
         btn.setOnClickListener(new View.OnClickListener() {
@@ -91,6 +119,13 @@ public class HomeFragment extends Fragment {
 
             }
         });
+    }
+
+
+    private class ViewHolder {
+        ImageView icon;
+        TextView appName;
+        TextView packgeName;
     }
 
     //获取系统已安装应用信息并存入list集合
@@ -108,7 +143,7 @@ public class HomeFragment extends Fragment {
             String packageName = info.activityInfo.packageName;
             String actionName = info.activityInfo.name;
             Drawable loadIcon = info.activityInfo.loadIcon(T.getPackageManager());
-            appInfo=new AppInfo(appLabel,packageName,actionName,loadIcon);
+            appInfo = new AppInfo(appLabel, packageName, actionName, loadIcon);
             AppInfoList.add(appInfo);
         }
     }
