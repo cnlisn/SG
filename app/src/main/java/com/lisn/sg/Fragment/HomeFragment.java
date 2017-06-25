@@ -11,7 +11,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -23,6 +25,8 @@ import com.lisn.sg.R;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.R.id.edit;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -70,7 +74,12 @@ public class HomeFragment extends Fragment {
     }
 
     private void initView(View view) {
-        Button btn = (Button) view.findViewById(R.id.btn);
+        EditText et_input = (EditText) view.findViewById(R.id.et_input);
+        //默认不弹出软键盘
+//        et_input.clearFocus();
+//        InputMethodManager imm = (InputMethodManager)T.getSystemService(Context.INPUT_METHOD_SERVICE);
+//        imm.hideSoftInputFromWindow(et_input.getWindowToken(),0);
+
         ListView listView = (ListView) view.findViewById(R.id.listView);
         AppInfoList = new ArrayList<AppInfo>();
         getList();
@@ -112,13 +121,6 @@ public class HomeFragment extends Fragment {
         mAdapter.setOnAppInfoClickListener(listener);
         listView.setAdapter(mAdapter);
 
-        btn.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
     }
 
 
