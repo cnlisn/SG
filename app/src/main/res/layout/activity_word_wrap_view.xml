@@ -23,9 +23,18 @@
     </android.support.design.widget.AppBarLayout>
 
     <com.lisn.sg.View.FixGridLayout
-        android:id="@+id/fgl"
+        android:id="@+id/fgl1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+    </com.lisn.sg.View.FixGridLayout>
+
+    <com.lisn.sg.View.FixGridLayout
+        android:id="@+id/fgl2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
     </com.lisn.sg.View.FixGridLayout>
 </LinearLayout>
