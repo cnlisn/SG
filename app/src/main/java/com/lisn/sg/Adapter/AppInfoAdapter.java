@@ -8,7 +8,6 @@ import android.widget.ListView;
 
 import com.lisn.sg.Bean.AppInfo;
 
-import org.w3c.dom.Node;
 
 import java.util.List;
 

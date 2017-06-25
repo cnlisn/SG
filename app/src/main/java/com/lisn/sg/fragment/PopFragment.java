@@ -1,4 +1,4 @@
-package com.lisn.sg.fragment;
+package com.lisn.sg.Fragment;
 
 import android.content.Context;
 import android.os.Bundle;

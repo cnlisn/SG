@@ -14,6 +14,7 @@ import android.view.MenuItem;
 
 import com.lisn.sg.Fragment.HomeFragment;
 import com.lisn.sg.Fragment.PopFragment;
+import com.lisn.sg.Fragment.SQlcruqFragment;
 
 
 public class HomeActivity extends BaseActivity {
@@ -22,6 +23,10 @@ public class HomeActivity extends BaseActivity {
     private NavigationView navigationView;
     private Fragment currentFragment;
     private int currentPos = -1;
+    private PopFragment mPopFragment;
+    private HomeFragment mHomeFragment;
+    private SQlcruqFragment mSQlcruqFragment;
+
     @Override
     public void setContentView() {
         setContentView(R.layout.activity_home);
@@ -35,7 +40,7 @@ public class HomeActivity extends BaseActivity {
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         ActionBarDrawerToggle DrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, 0, 0);
         DrawerToggle.syncState();
-        selectItem(1);
+        selectItem(2);
     }
 
     @Override
@@ -45,6 +50,15 @@ public class HomeActivity extends BaseActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case R.id.my_navigation_0:
+                        selectItem(0);
+                        break;
+                    case R.id.my_navigation_1:
+                        selectItem(1);
+                        break;
+                    case R.id.my_navigation_2:
+                        selectItem(2);
+                        break;
+                    case R.id.my_navigation_3:
                         selectItem(1);
                         break;
                 }
@@ -87,9 +101,9 @@ public class HomeActivity extends BaseActivity {
             case 1:
                 currentFragment = new PopFragment();
                 break;
-//            case 2:
-//                currentFragment = new ProcessFragment();
-//                break;
+            case 2:
+                currentFragment = new SQlcruqFragment();
+                break;
 //            case 3:
 //                currentFragment = new RecycleFragment();
 //                break;
