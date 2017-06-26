@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import com.lisn.sg.Fragment.HomeFragment;
 import com.lisn.sg.Fragment.PopFragment;
 import com.lisn.sg.Fragment.SQlcruqFragment;
+import com.lisn.sg.Fragment.SaveImgToSqliteFragment;
 import com.lisn.sg.Utils.LsUtils;
 
 
@@ -53,17 +54,20 @@ public class HomeActivity extends BaseActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
-                    case R.id.my_navigation_0:
+                    case R.id.my_navigation_0:  //手机应用信息
                         selectItem(0);
                         break;
-                    case R.id.my_navigation_1:
+                    case R.id.my_navigation_1:  //PopupWind
                         selectItem(1);
                         break;
-                    case R.id.my_navigation_2:
+                    case R.id.my_navigation_2:  //数据库增删改查
                         selectItem(2);
                         break;
-                    case R.id.my_navigation_3:
+                    case R.id.my_navigation_3:  //自动换行view
                         LsUtils.StarteActivity(mContext,WordWrapView.class);
+                        break;
+                    case R.id.my_navigation_4:  //保存图片到Sqlite数据库
+                        selectItem(4);
                         break;
                 }
                 drawerLayout.closeDrawer(Gravity.START);
@@ -100,20 +104,20 @@ public class HomeActivity extends BaseActivity {
     private Fragment getFragment(int pos) {
         switch (pos) {
             case 0:
-                currentFragment = new HomeFragment();
+                currentFragment = new HomeFragment();  //手机应用信息
                 break;
             case 1:
-                currentFragment = new PopFragment();
+                currentFragment = new PopFragment();    //PopupWind
                 break;
             case 2:
-                currentFragment = new SQlcruqFragment();
+                currentFragment = new SQlcruqFragment(); //数据库增删改查
                 break;
 //            case 3:
 //                currentFragment = new RecycleFragment();
 //                break;
-//            case 4:
-//                currentFragment = new OtherFragment();
-//                break;
+            case 4:
+                currentFragment = new SaveImgToSqliteFragment(); //保存图片到Sqlite数据库
+                break;
             default:
                 currentFragment = new HomeFragment();
                 break;

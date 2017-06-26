@@ -4,6 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.view.View;
+import android.widget.Toast;
+
+import com.lisn.sg.App.BaseApp;
 
 /**
  * Created by admin on 2017/6/19.
@@ -45,5 +48,18 @@ public class LsUtils {
         int w = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
         int h = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
         view.measure(w, h);
+    }
+
+    private static Toast toast;
+    public static void showToast(Context context, String text) {
+        if (toast == null) {
+            toast = Toast.makeText(context, text, Toast.LENGTH_SHORT);
+        }
+        toast.setText(text);
+        toast.show();
+    }
+    /*Toast工具*/
+    public static void showToast(String s) {
+        showToast(BaseApp.getInstance(),s);
     }
 }

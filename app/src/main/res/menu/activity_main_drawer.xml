@@ -5,19 +5,23 @@
         <item
             android:id="@+id/my_navigation_0"
             android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
+            android:title="手机应用信息" />
         <item
             android:id="@+id/my_navigation_1"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:title="PopupWind" />
         <item
             android:id="@+id/my_navigation_2"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:title="SQLite增删改查" />
         <item
             android:id="@+id/my_navigation_3"
             android:icon="@drawable/ic_menu_manage"
             android:title="自动换行view" />
+        <item
+            android:id="@+id/my_navigation_4"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="保存图片到SQLite" />
     </group>
 
     <item android:title="Communicate">
