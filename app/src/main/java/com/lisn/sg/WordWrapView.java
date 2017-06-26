@@ -1,5 +1,6 @@
 package com.lisn.sg;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -16,6 +17,7 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.lisn.sg.Utils.ScreenInfo;
 import com.lisn.sg.View.FixGridLayout;
 
 /**
@@ -23,7 +25,7 @@ import com.lisn.sg.View.FixGridLayout;
  */
 public class WordWrapView extends BaseActivity {
 
-    private Context mContext;
+    private Activity mContext;
 
 
     @Override
@@ -38,8 +40,9 @@ public class WordWrapView extends BaseActivity {
         initToolBar(toolbar,"自定义，自动换行view",true);
 
         FixGridLayout fixGridLayout = (FixGridLayout) findViewById(R.id.fgl1);
-        fixGridLayout.setmCellHeight(30);
-        fixGridLayout.setmCellWidth(100);
+        ScreenInfo screenInfo = new ScreenInfo(mContext);
+        fixGridLayout.setmCellHeight(80);
+        fixGridLayout.setmCellWidth(screenInfo.getWidth()/4);
         for (int i = 0; i < 17; i++) {
             CheckBox box = new CheckBox(WordWrapView.this);
             box.setText("第"+i+"个");

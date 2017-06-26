@@ -8,6 +8,7 @@ import android.content.pm.ResolveInfo;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ import android.widget.TextView;
 
 import com.lisn.sg.Adapter.AppInfoAdapter;
 import com.lisn.sg.Bean.AppInfo;
+import com.lisn.sg.HomeActivity;
 import com.lisn.sg.R;
 
 import java.util.ArrayList;
@@ -35,7 +37,7 @@ public class HomeFragment extends Fragment {
 
 
     private ArrayList AppInfoList;
-    private Context T;
+    private HomeActivity T;
     private List<ResolveInfo> mApps;
     private ResolveInfo info;
     private AppInfoAdapter.OnAppInfoClickListener listener;
@@ -50,7 +52,7 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-        T = getActivity();
+        T = (HomeActivity)getActivity();
 
 //        ImageButton imageButton = (ImageButton) view.findViewById(R.id.imagebutton);
 //        imageButton.setOnClickListener(new View.OnClickListener() {
@@ -71,6 +73,20 @@ public class HomeFragment extends Fragment {
         initView(view);
 
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        T.SetToolbarTitle("手机应用信息");
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        if (hidden) {// 不在最前端界面显示
+        } else {// 重新显示到最前端中
+            T.SetToolbarTitle("手机应用信息");
+        }
     }
 
     private void initView(View view) {

@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.lisn.sg.Db.DbHelper;
+import com.lisn.sg.HomeActivity;
 import com.lisn.sg.R;
 
 /**
@@ -21,12 +22,12 @@ import com.lisn.sg.R;
 public class SQlcruqFragment extends Fragment implements View.OnClickListener {
 
 
-    private Context mContext;
+    private HomeActivity mContext;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        mContext = getActivity();
+        mContext = (HomeActivity) getActivity();
         View view = inflater.inflate(R.layout.fragment_sqlcruq, container, false);
         Button add = (Button) view.findViewById(R.id.doAdd);
         Button Delete = (Button) view.findViewById(R.id.doDelete);
@@ -39,8 +40,19 @@ public class SQlcruqFragment extends Fragment implements View.OnClickListener {
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        mContext.SetToolbarTitle("数据库增删改查");
+    }
 
-
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        if (hidden) {// 不在最前端界面显示
+        } else {// 重新显示到最前端中
+            mContext.SetToolbarTitle("数据库增删改查");
+        }
+    }
     /*
      * insert into 表名[(columnList)]  values(valuesList);
 	 * update 表名 set 列名=新的列值[,列名=新的列值] where 子句

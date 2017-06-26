@@ -17,6 +17,7 @@ import com.lisn.sg.Fragment.HomeFragment;
 import com.lisn.sg.Fragment.PopFragment;
 import com.lisn.sg.Fragment.SQlcruqFragment;
 import com.lisn.sg.Fragment.SaveImgToSqliteFragment;
+import com.lisn.sg.Fragment.SelectDateTimeFragment;
 import com.lisn.sg.Utils.LsUtils;
 
 
@@ -30,6 +31,7 @@ public class HomeActivity extends BaseActivity {
     private HomeFragment mHomeFragment;
     private SQlcruqFragment mSQlcruqFragment;
     private Context mContext;
+    private Toolbar toolbar;
 
     @Override
     public void setContentView() {
@@ -39,13 +41,18 @@ public class HomeActivity extends BaseActivity {
 
     @Override
     public void initViews() {
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        initToolBar(toolbar,"标题",false);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        initToolBar(toolbar,"手机应用信息",false);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         ActionBarDrawerToggle DrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, 0, 0);
         DrawerToggle.syncState();
         selectItem(0);
+    }
+
+    public void SetToolbarTitle(String title){
+        toolbar.setTitle(title);
+
     }
 
     @Override
@@ -69,6 +76,9 @@ public class HomeActivity extends BaseActivity {
                     case R.id.my_navigation_4:  //保存图片到Sqlite数据库
                         selectItem(4);
                         break;
+                    case R.id.my_navigation_5:  //选择日期时间控件
+                        selectItem(5);
+                        break;
                 }
                 drawerLayout.closeDrawer(Gravity.START);
                 return true;
@@ -84,6 +94,7 @@ public class HomeActivity extends BaseActivity {
         if (currentFragment != null) {
             //隐藏当前正在显示的fragment
             transaction.hide(currentFragment);
+//            transaction.remove(currentFragment);
         }
         currentPos = pos;
         Fragment fragment = manager.findFragmentByTag(getTag(pos));
@@ -112,11 +123,11 @@ public class HomeActivity extends BaseActivity {
             case 2:
                 currentFragment = new SQlcruqFragment(); //数据库增删改查
                 break;
-//            case 3:
-//                currentFragment = new RecycleFragment();
-//                break;
             case 4:
                 currentFragment = new SaveImgToSqliteFragment(); //保存图片到Sqlite数据库
+                break;
+            case 5:
+                currentFragment = new SelectDateTimeFragment(); //选择日期时间控件
                 break;
             default:
                 currentFragment = new HomeFragment();

@@ -22,6 +22,10 @@
             android:id="@+id/my_navigation_4"
             android:icon="@drawable/ic_menu_manage"
             android:title="保存图片到SQLite" />
+        <item
+            android:id="@+id/my_navigation_5"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="选择日期时间控件" />
     </group>
 
     <item android:title="Communicate">

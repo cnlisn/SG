@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.lisn.sg.Db.SaveImgDbHelper;
+import com.lisn.sg.HomeActivity;
 import com.lisn.sg.R;
 import com.lisn.sg.Utils.ImageUtils;
 import com.lisn.sg.Utils.LsUtils;
@@ -27,11 +28,11 @@ import com.lisn.sg.Utils.LsUtils;
  */
 public class SaveImgToSqliteFragment extends Fragment implements View.OnClickListener {
     private static final String TAG = "SaveImgToSqliteFragment";
-    private Context mContext;
     private ImageView iv_img;
     private ImageView iv_readImg;
     private ImageUtils imageUtils;
     private long position = -1;
+    private HomeActivity mContext;
 
     public SaveImgToSqliteFragment() {
         // Required empty public constructor
@@ -41,10 +42,24 @@ public class SaveImgToSqliteFragment extends Fragment implements View.OnClickLis
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        mContext = getActivity();
+        mContext = (HomeActivity) getActivity();
         View view = inflater.inflate(R.layout.fragment_save_img_to_sqlite, container, false);
         initView(view);
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mContext.SetToolbarTitle("保存图片到Sqlite数据库");
+    }
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        if (hidden) {// 不在最前端界面显示
+        } else {// 重新显示到最前端中
+            mContext.SetToolbarTitle("保存图片到Sqlite数据库");
+        }
     }
 
     /**
@@ -92,7 +107,7 @@ public class SaveImgToSqliteFragment extends Fragment implements View.OnClickLis
         try {
             SaveImgDbHelper dbHelper = new SaveImgDbHelper(mContext);
             SQLiteDatabase db = dbHelper.getReadableDatabase();
-            Cursor cursor = db.rawQuery("select "+dbHelper.IMAGE+" from "+dbHelper.TB_NAME+" where _id=?", new String[]{String.valueOf(position)});
+            Cursor cursor = db.rawQuery("select " + dbHelper.IMAGE + " from " + dbHelper.TB_NAME + " where _id=?", new String[]{String.valueOf(position)});
 //            Cursor cursor = db.rawQuery("select "+dbHelper.IMAGE+" from "+dbHelper.TB_NAME,null);
 //            if (cursor != null && cursor.getCount() != 0) {
 //                //循环提取游标数据
