@@ -19,6 +19,7 @@ import com.lisn.sg.Fragment.PopFragment;
 import com.lisn.sg.Fragment.SQlcruqFragment;
 import com.lisn.sg.Fragment.SaveImgToSqliteFragment;
 import com.lisn.sg.Fragment.SelectDateTimeFragment;
+import com.lisn.sg.Fragment.TuWenHunPaiFragment;
 import com.lisn.sg.Utils.LsUtils;
 
 
@@ -48,7 +49,7 @@ public class HomeActivity extends BaseActivity {
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         ActionBarDrawerToggle DrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, 0, 0);
         DrawerToggle.syncState();
-        selectItem(6);
+        selectItem(7);
     }
 
     public void SetToolbarTitle(String title){
@@ -80,8 +81,11 @@ public class HomeActivity extends BaseActivity {
                     case R.id.my_navigation_5:  //选择日期时间控件
                         selectItem(5);
                         break;
-                    case R.id.my_navigation_6:  //选择日期时间控件
+                    case R.id.my_navigation_6:  //漂亮的EditText
                         selectItem(6);
+                        break;
+                    case R.id.my_navigation_7:  //图文混排
+                        selectItem(7);
                         break;
                 }
                 drawerLayout.closeDrawer(Gravity.START);
@@ -135,6 +139,9 @@ public class HomeActivity extends BaseActivity {
                 break;
             case 6:
                 currentFragment = new MyEditTextFragment(); //漂亮的EditText
+                break;
+            case 7:
+                currentFragment = new TuWenHunPaiFragment(); //图文混排
                 break;
             default:
                 currentFragment = new HomeFragment();

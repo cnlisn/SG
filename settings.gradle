@@ -1,1 +1,1 @@
-include ':app', ':myEditText_library'
+include ':app', ':myEditText_library', ':androidSpan'
