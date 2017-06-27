@@ -19,7 +19,7 @@
         android:id="@+id/biu1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="80dp"
         android:hint="biu,biu,发射1号"
         android:textColor="@android:color/holo_blue_dark"
         app:biu_duration="800"
@@ -31,6 +31,7 @@
     <com.lisn.edittext.BiuEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
         android:hint="biu,biu,发射2号"
         android:textColor="@android:color/holo_green_dark"
         app:biu_duration="800"
