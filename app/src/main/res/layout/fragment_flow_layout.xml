@@ -1,0 +1,29 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="5dp"
+    tools:context="com.lisn.sg.Fragment.FlowLayoutFragment">
+
+    <TextView
+        android:padding="8dp"
+        android:textColor="@color/white"
+        android:background="@drawable/flow_layout_select_content_bg"
+        android:id="@+id/tv_SelectContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/hello_blank_fragment" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.lisn.sg.FlowLayout.FlowLayout
+            android:id="@+id/fl"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </com.lisn.sg.FlowLayout.FlowLayout>
+    </ScrollView>
+
+</LinearLayout>

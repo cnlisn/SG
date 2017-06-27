@@ -1,5 +1,6 @@
 package com.lisn.sg.Utils;
 
+import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -13,7 +14,7 @@ import com.lisn.sg.App.BaseApp;
  */
 
 public class LsUtils {
-    private final Context mContext;
+    private static Context mContext;
 
     public LsUtils(Context context) {
         this.mContext = context;
@@ -61,5 +62,10 @@ public class LsUtils {
     /*Toast工具*/
     public static void showToast(String s) {
         showToast(BaseApp.getInstance(),s);
+    }
+
+    public static int dip2px(float dip) {
+        float density = mContext.getResources().getDisplayMetrics().density;
+        return (int) (dip * density + 0.5f);
     }
 }

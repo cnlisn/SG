@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.lisn.sg.HomeActivity;
+import com.lisn.sg.Utils.LsUtils;
 
 /**
  * Created by admin on 2017/6/27.
@@ -32,6 +33,7 @@ public abstract class BaseFragment extends Fragment {
     private boolean mIsPrepare; //mIsPrepare 表示是否已经加载view，该属性主要用于懒加载
     public FragmentActivity mContext; //贴附的activity
     private View mRootView; //根view
+    public LsUtils mLsUtils;
 
     public void setToolbarTitle(String toolbarTitle) {
         ToolbarTitle = toolbarTitle;
@@ -42,6 +44,7 @@ public abstract class BaseFragment extends Fragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         mContext = getActivity();
+        mLsUtils = new LsUtils(mContext);
     }
 
 
@@ -65,7 +68,7 @@ public abstract class BaseFragment extends Fragment {
      * 初始化数据
      * @param arguments 接收到的从其他地方传递过来的参数
      */
-    private void initData(Bundle arguments) {
+    protected void initData(Bundle arguments) {
 
     }
 

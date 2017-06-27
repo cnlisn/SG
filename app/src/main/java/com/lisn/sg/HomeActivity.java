@@ -13,6 +13,7 @@ import android.view.Gravity;
 import android.view.MenuItem;
 
 
+import com.lisn.sg.Fragment.FlowLayoutFragment;
 import com.lisn.sg.Fragment.HomeFragment;
 import com.lisn.sg.Fragment.MyEditTextFragment;
 import com.lisn.sg.Fragment.PopFragment;
@@ -49,7 +50,7 @@ public class HomeActivity extends BaseActivity {
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         ActionBarDrawerToggle DrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, 0, 0);
         DrawerToggle.syncState();
-        selectItem(7);
+        selectItem(8);
     }
 
     public void SetToolbarTitle(String title){
@@ -86,6 +87,9 @@ public class HomeActivity extends BaseActivity {
                         break;
                     case R.id.my_navigation_7:  //图文混排
                         selectItem(7);
+                        break;
+                    case R.id.my_navigation_8:  //流式布局
+                        selectItem(8);
                         break;
                 }
                 drawerLayout.closeDrawer(Gravity.START);
@@ -142,6 +146,9 @@ public class HomeActivity extends BaseActivity {
                 break;
             case 7:
                 currentFragment = new TuWenHunPaiFragment(); //图文混排
+                break;
+            case 8:
+                currentFragment = new FlowLayoutFragment(); //流式布局
                 break;
             default:
                 currentFragment = new HomeFragment();

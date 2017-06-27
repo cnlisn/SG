@@ -39,6 +39,10 @@
                 android:icon="@drawable/ic_menu_share"
                 android:title="图文混排" />
             <item
+                android:id="@+id/my_navigation_8"
+                android:icon="@drawable/ic_menu_share"
+                android:title="流式布局" />
+            <item
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_menu_share"
                 android:title="Share" />
