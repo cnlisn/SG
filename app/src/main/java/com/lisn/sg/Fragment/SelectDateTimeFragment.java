@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import com.lisn.sg.HomeActivity;
 import com.lisn.sg.R;
+import com.lisn.sg.Utils.LogUtils;
 import com.lisn.sg.Utils.ScreenInfo;
 import com.lisn.sg.View.SelectDateTime.DateUtils;
 import com.lisn.sg.View.SelectDateTime.WheelMain;
@@ -46,7 +47,7 @@ public class SelectDateTimeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        mContext = (HomeActivity)getActivity();
+        mContext = (HomeActivity) getActivity();
         View view = inflater.inflate(R.layout.fragment_select_date_time, container, false);
         initViews(view);
         return view;
@@ -78,13 +79,13 @@ public class SelectDateTimeFragment extends Fragment {
     }
 
     public void showBottoPopupWindow() {
-        WindowManager manager = (WindowManager)mContext.getSystemService(Context.WINDOW_SERVICE);
+        WindowManager manager = (WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE);
         Display defaultDisplay = manager.getDefaultDisplay();
         DisplayMetrics outMetrics = new DisplayMetrics();
         defaultDisplay.getMetrics(outMetrics);
         int width = outMetrics.widthPixels;
-        View menuView = LayoutInflater.from(mContext).inflate(R.layout.select_date_time_popup_window,null);
-        final PopupWindow mPopupWindow = new PopupWindow(menuView, (int)(width*0.8),
+        View menuView = LayoutInflater.from(mContext).inflate(R.layout.select_date_time_popup_window, null);
+        final PopupWindow mPopupWindow = new PopupWindow(menuView, (int) (width * 0.8),
                 ActionBar.LayoutParams.WRAP_CONTENT);
         ScreenInfo screenInfoDate = new ScreenInfo(mContext);
         wheelMainDate = new WheelMain(menuView, true);
@@ -99,7 +100,7 @@ public class SelectDateTimeFragment extends Fragment {
         int day = calendar.get(Calendar.DAY_OF_MONTH);
         int hours = calendar.get(Calendar.HOUR_OF_DAY);
         int minute = calendar.get(Calendar.MINUTE);
-        wheelMainDate.initDateTimePicker(year, month, day, hours,minute);
+        wheelMainDate.initDateTimePicker(year, month, day, hours, minute);
         mPopupWindow.setAnimationStyle(R.style.AnimationPreview);
         mPopupWindow.setTouchable(true);
         mPopupWindow.setFocusable(true);
@@ -123,17 +124,24 @@ public class SelectDateTimeFragment extends Fragment {
             @Override
             public void onClick(View arg0) {
                 String beginTime = wheelMainDate.getTime().toString();
-                tv_selectDataTime.setText(DateUtils.formateStringH(beginTime,DateUtils.yyyyMMddHHmm));
+                String text = DateUtils.formateStringH(beginTime, DateUtils.yyyyMMddHHmm);
+                tv_selectDataTime.setText(text);
                 mPopupWindow.dismiss();
                 backgroundAlpha(1f);
+                LogUtils.init("---", LogUtils.LEVEL_E)
+                        .append("打印等级为ERROR的一条日志")
+                        .append("text", text)
+                        .print();
             }
         });
     }
+
     public void backgroundAlpha(float bgAlpha) {
         WindowManager.LayoutParams lp = mContext.getWindow().getAttributes();
         lp.alpha = bgAlpha;
         mContext.getWindow().setAttributes(lp);
     }
+
     class poponDismissListener implements PopupWindow.OnDismissListener {
         @Override
         public void onDismiss() {
