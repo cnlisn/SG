@@ -26,10 +26,10 @@ import java.util.List;
 public class FlowLayoutFragment extends BaseFragment {
 
     private String[] data = new String[]{"全部", "这是", "测试标签",
-            "这是测试标签", "FlowLayout", "衣服", "鞋子",
+            "这是测试标签2", "FlowLayout", "衣服", "鞋子",
             "春", "夏", "深秋", "寒冬",
-            "测一下看看效果如何", "心情还不错哦", "这是测试标签", "这是测试标签",
-            "这是测试标签", "受益匪浅啊", "123456789", "电话号码"};
+            "测一下看看效果如何", "心情还不错哦", "这是测试标签1", "这是测试标签3",
+            "这是测试标签4", "受益匪浅啊", "123456789", "电话号码"};
     private FlowLayout flowLayout;
     private int padding;
     private List<TextView> tvData = new ArrayList<>();
@@ -60,11 +60,11 @@ public class FlowLayoutFragment extends BaseFragment {
                     boolean tag = (boolean) textView.getTag();
                     if (tag) {
                         textView.setTag(false);
-                        RemoveSelectContent(s);
+//                        RemoveSelectContent(s);
                     } else {
                         mLsUtils.showToast(s);
                         textView.setTag(true);
-                        AddSelectContent(s);
+//                        AddSelectContent(s);
                     }
                     if (!tag) {
                         textView.setTextColor(Color.WHITE);
@@ -75,7 +75,7 @@ public class FlowLayoutFragment extends BaseFragment {
                     }
                     textView.setBackgroundDrawable(selector);
 
-//                    getSelectContent();
+                    getSelectContent();
                 }
             });
             StateListDrawable selector = DrawableUtils.getSelector(true, Color.WHITE, color, CornerRadius);
@@ -136,17 +136,19 @@ public class FlowLayoutFragment extends BaseFragment {
      */
     private void RemoveSelectContent(String s){
         String content = selectContent.getText().toString();
-        int indexOf = content.indexOf(s);
-        int contentLength = content.length();
-        int index = indexOf + s.length();
-//        Logger.e("contentLength="+contentLength+" index="+index);
-        char c = contentLength!=index?content.charAt(index):'1';
-        if (c=='、'){
-             replace = content.replace(s+"、", "");
-        }else {
-             replace = content.replace(s, "");
+        if (content.contains(s)){
+            int length = content.length();
+            int sLength = content.indexOf(s) + s.length();
+            if (length==sLength){
+                replace = content.replace("、"+s, "");
+            }else {
+                replace = content.replace(s+"、", "");
+            }
         }
-//        Logger.e("replace="+replace);
-        selectContent.setText(replace);
+        if (replace.length()>0){
+            selectContent.setText(replace);
+        }else {
+            selectContent.setText("");
+        }
     }
 }
