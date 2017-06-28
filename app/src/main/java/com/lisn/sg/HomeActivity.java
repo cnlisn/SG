@@ -19,6 +19,7 @@ import com.lisn.sg.Fragment.MyEditTextFragment;
 import com.lisn.sg.Fragment.PopFragment;
 import com.lisn.sg.Fragment.SQlcruqFragment;
 import com.lisn.sg.Fragment.SaveImgToSqliteFragment;
+import com.lisn.sg.Fragment.SelectColorFragment;
 import com.lisn.sg.Fragment.SelectDateTimeFragment;
 import com.lisn.sg.Fragment.TuWenHunPaiFragment;
 import com.lisn.sg.Utils.LsUtils;
@@ -50,7 +51,7 @@ public class HomeActivity extends BaseActivity {
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         ActionBarDrawerToggle DrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, 0, 0);
         DrawerToggle.syncState();
-        selectItem(8);
+        selectItem(9);
     }
 
     public void SetToolbarTitle(String title){
@@ -90,6 +91,9 @@ public class HomeActivity extends BaseActivity {
                         break;
                     case R.id.my_navigation_8:  //流式布局
                         selectItem(8);
+                        break;
+                    case R.id.my_navigation_9:  //选择颜色
+                        selectItem(9);
                         break;
                 }
                 drawerLayout.closeDrawer(Gravity.START);
@@ -149,6 +153,9 @@ public class HomeActivity extends BaseActivity {
                 break;
             case 8:
                 currentFragment = new FlowLayoutFragment(); //流式布局
+                break;
+            case 9:
+                currentFragment = new SelectColorFragment(); //选择颜色
                 break;
             default:
                 currentFragment = new HomeFragment();
