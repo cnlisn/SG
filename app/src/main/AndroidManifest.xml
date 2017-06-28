@@ -42,6 +42,11 @@
         <activity android:name=".Popup.PopupWindowActivity" />
         <!--自动换行View-->
         <activity android:name=".WordWrapView"></activity>
+        <!--BadgeView-->
+        <activity android:name=".BadgeView.BaseBadgeViewActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:name=".BadgeView.BadgeListViewActivity"/>
+        <activity android:name=".BadgeView.BadgeRecyclerViewActivity"/>
     </application>
 
 </manifest>

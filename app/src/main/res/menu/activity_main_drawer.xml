@@ -45,7 +45,7 @@
             <item
                 android:id="@+id/my_navigation_9"
                 android:icon="@drawable/ic_menu_share"
-                android:title="流式布局" />
+                android:title="颜色选择AlertDialog" />
             <item
                 android:id="@+id/my_navigation_10"
                 android:icon="@drawable/ic_menu_share"

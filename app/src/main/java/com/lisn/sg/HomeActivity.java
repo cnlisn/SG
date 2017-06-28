@@ -13,6 +13,7 @@ import android.view.Gravity;
 import android.view.MenuItem;
 
 
+import com.lisn.sg.Fragment.BadgeViewFragment;
 import com.lisn.sg.Fragment.FlowLayoutFragment;
 import com.lisn.sg.Fragment.HomeFragment;
 import com.lisn.sg.Fragment.MyEditTextFragment;
@@ -51,7 +52,7 @@ public class HomeActivity extends BaseActivity {
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         ActionBarDrawerToggle DrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, 0, 0);
         DrawerToggle.syncState();
-        selectItem(9);
+        selectItem(10);
     }
 
     public void SetToolbarTitle(String title){
@@ -94,6 +95,9 @@ public class HomeActivity extends BaseActivity {
                         break;
                     case R.id.my_navigation_9:  //选择颜色
                         selectItem(9);
+                        break;
+                    case R.id.my_navigation_10:  //BadgeView
+                        selectItem(10);
                         break;
                 }
                 drawerLayout.closeDrawer(Gravity.START);
@@ -156,6 +160,9 @@ public class HomeActivity extends BaseActivity {
                 break;
             case 9:
                 currentFragment = new SelectColorFragment(); //选择颜色
+                break;
+            case 10:
+                currentFragment = new BadgeViewFragment(); //BadgeView 小红点
                 break;
             default:
                 currentFragment = new HomeFragment();

@@ -63,7 +63,7 @@ public class HomeFragment extends Fragment {
 //                Intent intent = new Intent();
 //                ComponentName comp = new ComponentName(
 //                        packageName,
-//                        packageName+".MainActivity");
+//                        packageName+".BaseBadgeViewActivity");
 //                intent.setComponent(comp);
 ////                intent.setAction("android.intent.action.MAIN");
 //                startActivity(intent);
