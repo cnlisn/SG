@@ -3,6 +3,9 @@ package com.lisn.sg.App;
 import android.app.Application;
 import android.content.Context;
 
+import com.orhanobut.logger.AndroidLogAdapter;
+import com.orhanobut.logger.Logger;
+
 /**
  * Created by admin on 2017/6/26.
  */
@@ -14,6 +17,7 @@ public class BaseApp extends Application {
     public void onCreate() {
         super.onCreate();
         instance = this;// 赋值
+        Logger.addLogAdapter(new AndroidLogAdapter());
     }
 
     /**

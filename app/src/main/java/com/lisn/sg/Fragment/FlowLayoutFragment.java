@@ -1,7 +1,6 @@
 package com.lisn.sg.Fragment;
 
 
-import android.app.FragmentBreadCrumbs;
 import android.graphics.Color;
 import android.graphics.drawable.StateListDrawable;
 import android.os.Bundle;
@@ -9,16 +8,17 @@ import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.lisn.sg.FlowLayout.DrawableUtils;
 import com.lisn.sg.FlowLayout.FlowLayout;
 import com.lisn.sg.R;
-import com.lisn.sg.Utils.LsUtils;
+import com.orhanobut.logger.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
+
+
 
 /**
  * 流式布局
@@ -34,6 +34,7 @@ public class FlowLayoutFragment extends BaseFragment {
     private int padding;
     private List<TextView> tvData = new ArrayList<>();
     private TextView selectContent;
+    private String replace;
 
     @Override
     protected int setLayoutResouceId() {
@@ -59,9 +60,11 @@ public class FlowLayoutFragment extends BaseFragment {
                     boolean tag = (boolean) textView.getTag();
                     if (tag) {
                         textView.setTag(false);
+                        RemoveSelectContent(s);
                     } else {
                         mLsUtils.showToast(s);
                         textView.setTag(true);
+                        AddSelectContent(s);
                     }
                     if (!tag) {
                         textView.setTextColor(Color.WHITE);
@@ -72,7 +75,7 @@ public class FlowLayoutFragment extends BaseFragment {
                     }
                     textView.setBackgroundDrawable(selector);
 
-                    getSelectContent();
+//                    getSelectContent();
                 }
             });
             StateListDrawable selector = DrawableUtils.getSelector(true, Color.WHITE, color, CornerRadius);
@@ -120,7 +123,11 @@ public class FlowLayoutFragment extends BaseFragment {
      * @param s
      */
     private void AddSelectContent(String s){
-        selectContent.append(s+"、");
+        String content = selectContent.getText().toString();
+        if(content.length()>0){
+            selectContent.append("、");
+        }
+        selectContent.append(s);
     }
 
     /**
@@ -130,9 +137,16 @@ public class FlowLayoutFragment extends BaseFragment {
     private void RemoveSelectContent(String s){
         String content = selectContent.getText().toString();
         int indexOf = content.indexOf(s);
-        int lastIndexOf = indexOf + s.length()+1;
-        String substring = content.substring(0, indexOf + 1);
-        // TODO: 2017/6/27  
-        selectContent.append(s+"、");
+        int contentLength = content.length();
+        int index = indexOf + s.length();
+//        Logger.e("contentLength="+contentLength+" index="+index);
+        char c = contentLength!=index?content.charAt(index):'1';
+        if (c=='、'){
+             replace = content.replace(s+"、", "");
+        }else {
+             replace = content.replace(s, "");
+        }
+//        Logger.e("replace="+replace);
+        selectContent.setText(replace);
     }
 }
