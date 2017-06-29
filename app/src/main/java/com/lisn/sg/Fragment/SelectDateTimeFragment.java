@@ -2,13 +2,11 @@ package com.lisn.sg.Fragment;
 
 
 import android.app.ActionBar;
-import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -20,12 +18,15 @@ import android.widget.TextView;
 
 import com.lisn.sg.HomeActivity;
 import com.lisn.sg.R;
+import com.lisn.sg.SelectDateTime.TimeIntervalDialog;
+import com.lisn.sg.SelectDateTime.TimeIntervalDialog.TimeIntervalInterface;
 import com.lisn.sg.Utils.LogUtils;
+import com.lisn.sg.Utils.LsUtils;
 import com.lisn.sg.Utils.ScreenInfo;
 import com.lisn.sg.View.SelectDateTime.DateUtils;
 import com.lisn.sg.View.SelectDateTime.WheelMain;
+import com.orhanobut.logger.Logger;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -38,6 +39,7 @@ public class SelectDateTimeFragment extends Fragment {
     private WheelMain wheelMainDate;
     private TextView tv_center;
     private HomeActivity mContext;
+    private TextView tv_timeIntervalDialog;
 
     public SelectDateTimeFragment() {
         // Required empty public constructor
@@ -69,6 +71,15 @@ public class SelectDateTimeFragment extends Fragment {
 
     private void initViews(View view) {
         tv_selectDataTime = (TextView) view.findViewById(R.id.tv_selectDataTime);
+        tv_timeIntervalDialog = (TextView) view.findViewById(R.id.tv_TimeIntervalDialog);
+        tv_timeIntervalDialog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LsUtils.showToast("tv_selectDataTime");
+                ShowTimeIntervalDialog();
+            }
+        });
+
         tv_center = (TextView) view.findViewById(R.id.tv_center);
         tv_selectDataTime.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,6 +87,31 @@ public class SelectDateTimeFragment extends Fragment {
                 showBottoPopupWindow();
             }
         });
+    }
+
+    private void ShowTimeIntervalDialog() {
+        new TimeIntervalDialog(mContext, new TimeIntervalInterface() {
+
+            @Override
+            public void apply(int startHour, int startMin, int endHour,
+                              int endMin) {
+                tv_timeIntervalDialog.setText("开始时间 " + startHour +
+                        ":" + startMin +
+                        "  结束时间 " + endHour +
+                        ":" + endMin);
+                Logger.e("startHour=" + startHour +
+                        " startMin=" + startMin +
+                        " endHour=" + endHour +
+                        " endMin=" + endMin
+                );
+            }
+
+            @Override
+            public void cancel() {
+                //ignore
+            }
+
+        }).show();
     }
 
     public void showBottoPopupWindow() {
