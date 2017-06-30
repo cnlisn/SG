@@ -1,0 +1,46 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="6dp"
+    tools:context="com.lisn.sg.Fragment.WidgetStyleFragment">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="修改光标颜色(默认)" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="默认样式" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="修改光标颜色(修改后)" />
+
+    <EditText
+        android:id="@+id/et_style"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="修改后样式"
+        android:textCursorDrawable="@drawable/cursor" />
+
+    <!--android:backgroundTint="#9bd435"     下划线颜色-->
+    <!--android:textColorHighlight="#9bd435"  选中文字背景色-->
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="修改选中图标"
+        android:textCursorDrawable="@drawable/cursor"
+        android:textSelectHandle="@drawable/eticon"
+        android:textColorHighlight="#9bd435"
+        android:backgroundTint="#9bd435"
+        android:textSelectHandleLeft="@drawable/eticon"
+        android:textSelectHandleRight="@drawable/eticon" />
+
+
+</LinearLayout>

@@ -23,6 +23,7 @@ import com.lisn.sg.Fragment.SaveImgToSqliteFragment;
 import com.lisn.sg.Fragment.SelectColorFragment;
 import com.lisn.sg.Fragment.SelectDateTimeFragment;
 import com.lisn.sg.Fragment.TuWenHunPaiFragment;
+import com.lisn.sg.Fragment.WidgetStyleFragment;
 import com.lisn.sg.Utils.LsUtils;
 
 
@@ -52,7 +53,7 @@ public class HomeActivity extends BaseActivity {
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         ActionBarDrawerToggle DrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, 0, 0);
         DrawerToggle.syncState();
-        selectItem(10);
+        selectItem(11);
     }
 
     public void SetToolbarTitle(String title){
@@ -98,6 +99,9 @@ public class HomeActivity extends BaseActivity {
                         break;
                     case R.id.my_navigation_10:  //BadgeView
                         selectItem(10);
+                        break;
+                    case R.id.my_navigation_11:  //控件样式修改
+                        selectItem(11);
                         break;
                 }
                 drawerLayout.closeDrawer(Gravity.START);
@@ -163,6 +167,9 @@ public class HomeActivity extends BaseActivity {
                 break;
             case 10:
                 currentFragment = new BadgeViewFragment(); //BadgeView 小红点
+                break;
+            case 11:
+                currentFragment = new WidgetStyleFragment(); //控件样式修改
                 break;
             default:
                 currentFragment = new HomeFragment();
