@@ -64,4 +64,10 @@
         <item name="android:windowEnterAnimation">@anim/pop_push_up_in</item>
         <item name="android:windowExitAnimation">@anim/pop_push_down_out</item>
     </style>
+
+    <style name="style_tab_selector">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/color_666666_to_d30775_selector</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
 </resources>

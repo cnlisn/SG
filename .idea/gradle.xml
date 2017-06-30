@@ -12,6 +12,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/badgeviewlib" />
             <option value="$PROJECT_DIR$/myEditText_library" />
+            <option value="$PROJECT_DIR$/scrollviewtabindicator" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
