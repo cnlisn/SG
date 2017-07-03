@@ -3,8 +3,11 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/SG.iml" filepath="$PROJECT_DIR$/SG.iml" />
+      <module fileurl="file://$PROJECT_DIR$/androidSpan/androidSpan.iml" filepath="$PROJECT_DIR$/androidSpan/androidSpan.iml" />
       <module fileurl="file://$PROJECT_DIR$/androidSpan/androidspan.iml" filepath="$PROJECT_DIR$/androidSpan/androidspan.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/badgeviewlib/badgeviewlib.iml" filepath="$PROJECT_DIR$/badgeviewlib/badgeviewlib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/myEditText_library/myEditText_library.iml" filepath="$PROJECT_DIR$/myEditText_library/myEditText_library.iml" />
       <module fileurl="file://$PROJECT_DIR$/myEditText_library/myEditText_library.iml" filepath="$PROJECT_DIR$/myEditText_library/myEditText_library.iml" />
     </modules>
   </component>

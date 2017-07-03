@@ -17,6 +17,7 @@ import com.lisn.sg.Fragment.BadgeViewFragment;
 import com.lisn.sg.Fragment.FlowLayoutFragment;
 import com.lisn.sg.Fragment.HomeFragment;
 import com.lisn.sg.Fragment.MyEditTextFragment;
+import com.lisn.sg.Fragment.PieGraphViewFragment;
 import com.lisn.sg.Fragment.PopFragment;
 import com.lisn.sg.Fragment.SQlcruqFragment;
 import com.lisn.sg.Fragment.SaveImgToSqliteFragment;
@@ -107,6 +108,9 @@ public class HomeActivity extends BaseActivity {
                     case R.id.my_navigation_12:  //垂直滑动的ViewPagerIndicator
                         selectItem(12);
                         break;
+                    case R.id.my_navigation_13:  //PieGraph饼图
+                        selectItem(13);
+                        break;
                 }
                 drawerLayout.closeDrawer(Gravity.START);
                 return true;
@@ -177,6 +181,9 @@ public class HomeActivity extends BaseActivity {
                 break;
             case 12:
                 currentFragment = new ScrollViewIndicatorFragment(); //ScrollViewIndicator 垂直滑动的ViewPagerIndicator
+                break;
+            case 13:
+                currentFragment = new PieGraphViewFragment(); //PieGraph饼图
                 break;
             default:
                 currentFragment = new HomeFragment();
