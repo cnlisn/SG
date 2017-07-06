@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import com.lisn.sg.Fragment.BadgeViewFragment;
 import com.lisn.sg.Fragment.FlowLayoutFragment;
 import com.lisn.sg.Fragment.HomeFragment;
+import com.lisn.sg.Fragment.LineChartViewFragment;
 import com.lisn.sg.Fragment.MyEditTextFragment;
 import com.lisn.sg.Fragment.PieGraphViewFragment;
 import com.lisn.sg.Fragment.PopFragment;
@@ -55,7 +56,7 @@ public class HomeActivity extends BaseActivity {
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         ActionBarDrawerToggle DrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, 0, 0);
         DrawerToggle.syncState();
-        selectItem(12);
+        selectItem(14);
     }
 
     public void SetToolbarTitle(String title){
@@ -110,6 +111,9 @@ public class HomeActivity extends BaseActivity {
                         break;
                     case R.id.my_navigation_13:  //PieGraph饼图
                         selectItem(13);
+                        break;
+                    case R.id.my_navigation_14:  //LineChartView曲线图
+                        selectItem(14);
                         break;
                 }
                 drawerLayout.closeDrawer(Gravity.START);
@@ -184,6 +188,9 @@ public class HomeActivity extends BaseActivity {
                 break;
             case 13:
                 currentFragment = new PieGraphViewFragment(); //PieGraph饼图
+                break;
+            case 14:
+                currentFragment = new LineChartViewFragment(); //LineChartView曲线图
                 break;
             default:
                 currentFragment = new HomeFragment();
