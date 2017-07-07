@@ -28,7 +28,7 @@ import java.util.Random;
 import static android.content.ContentValues.TAG;
 
 
-public class BiuEditText extends EditText {
+public class BiuEditText extends android.support.v7.widget.AppCompatEditText {
     private ViewGroup contentContainer;
     private int height;
     private String cacheStr = "";

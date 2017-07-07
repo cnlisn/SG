@@ -14,6 +14,7 @@ import android.view.MenuItem;
 
 
 import com.lisn.sg.Fragment.BadgeViewFragment;
+import com.lisn.sg.Fragment.CircleProgressViewFragment;
 import com.lisn.sg.Fragment.FlowLayoutFragment;
 import com.lisn.sg.Fragment.HomeFragment;
 import com.lisn.sg.Fragment.LineChartViewFragment;
@@ -56,7 +57,7 @@ public class HomeActivity extends BaseActivity {
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         ActionBarDrawerToggle DrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, 0, 0);
         DrawerToggle.syncState();
-        selectItem(14);
+        selectItem(15);
     }
 
     public void SetToolbarTitle(String title){
@@ -114,6 +115,9 @@ public class HomeActivity extends BaseActivity {
                         break;
                     case R.id.my_navigation_14:  //LineChartView曲线图
                         selectItem(14);
+                        break;
+                    case R.id.my_navigation_15:  //自定义圆形进度条
+                        selectItem(15);
                         break;
                 }
                 drawerLayout.closeDrawer(Gravity.START);
@@ -191,6 +195,9 @@ public class HomeActivity extends BaseActivity {
                 break;
             case 14:
                 currentFragment = new LineChartViewFragment(); //LineChartView曲线图
+                break;
+            case 15:
+                currentFragment = new CircleProgressViewFragment(); // 自定义圆形进度条
                 break;
             default:
                 currentFragment = new HomeFragment();
