@@ -9,6 +9,8 @@ import android.widget.Toast;
 
 import com.lisn.circleprogressview.CircleProgressView;
 import com.lisn.sg.R;
+import com.lisn.sg.Utils.SLog;
+import com.lisn.sg.Utils.ToastUtil;
 
 /**
  * 自定义圆形进度条
@@ -41,10 +43,11 @@ public class CircleProgressViewFragment extends BaseFragment {
                     public void onAnimationUpdate(ValueAnimator animation) {
                         float current = (float) animation.getAnimatedValue();
                         mCircleProgressView.setmCurrent((int) current);
+                        SLog.e("currrnt="+current);
                     }
                 });
                 animator.start();
-
+                ToastUtil.showToast(mContext,R.layout.test_toast_layout);
                 mCircleProgressView.setOnLoadingCompleteListener(new CircleProgressView.OnLoadingCompleteListener() {
                     @Override
                     public void complete() {
